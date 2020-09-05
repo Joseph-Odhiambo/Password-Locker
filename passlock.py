@@ -1,30 +1,28 @@
-class User:
+import unittest
+from passlock import User
+from passlock import Credentials
+
+class TestClass(unittest.TestCase):
     """
-    Create User class that generates new instances of a user.
-
+    A Test class that defines test cases for the User class.
     """
-    user_list = []
-
-    def __init__(self, username, password):
+    def setUp(self):
         """
-        method that defines the properties of a user.
+        Method that runs before each individual test methods run.
         """
-        self.username = username
-        self.password = password
+        self.new_user = User('OwitiCharles','XyZ3thf1')
 
-    def save_user(self):
+    def test_init(self):
         """
-        A method that saves a new user instace into the user list
+        test case to chek if the object has been initialized correctly
         """
-        User.user_list.append(self)
-    
+        self.assertEqual(self.new_user.username,'OwitiCharles')
+        self.assertEqual(self.new_user.password,'XyZ3thf1')
 
-    @classmethod
-    def display_user(cls):
-        return cls.user_list
+    def test_save_user(self):
+        """
+        test case to test if a new user instance has been saved into the User list
 
-    def delete_user(self):
-        '''
-        delete_account method deletes a  saved account from the list
-        '''
-        User.user_list.remove(self)
+        """
+        self.new_user.save_user()
+        self.assertEqual(len(User.user_list),1)
