@@ -1,6 +1,6 @@
 import unittest
 from passlock import User
-from passlock import Credentials
+# from passlock import Credentials
 
 class TestClass(unittest.TestCase):
     """
@@ -26,3 +26,6 @@ class TestClass(unittest.TestCase):
         """
         self.new_user.save_user()
         self.assertEqual(len(User.user_list),1)
+
+if __name__ == "__main__":
+    unittest.main()
