@@ -1,28 +1,33 @@
-import unittest
-from passlock import User
-from passlock import Credentials
-
-class TestClass(unittest.TestCase):
+import random
+import string
+import pyperclip
+class User:
     """
-    A Test class that defines test cases for the User class.
+    Create User class that generates new instances of a user.
+
     """
-    def setUp(self):
-        """
-        Method that runs before each individual test methods run.
-        """
-        self.new_user = User('OwitiCharles','XyZ3thf1')
+    user_list = []
 
-    def test_init(self):
+    def __init__(self, username, password):
         """
-        test case to chek if the object has been initialized correctly
+        method that defines the properties of a user.
         """
-        self.assertEqual(self.new_user.username,'OwitiCharles')
-        self.assertEqual(self.new_user.password,'XyZ3thf1')
+        self.username = username
+        self.password = password
 
-    def test_save_user(self):
+    def save_user(self):
         """
-        test case to test if a new user instance has been saved into the User list
+        A method that saves a new user instace into the user list
+        """
+        User.user_list.append(self)
+    
 
-        """
-        self.new_user.save_user()
-        self.assertEqual(len(User.user_list),1)
+    @classmethod
+    def display_user(cls):
+        return cls.user_list
+
+    def delete_user(self):
+        '''
+        delete_account method deletes a  saved account from the list
+        '''
+        User.user_list.remove(self)
