@@ -1,6 +1,6 @@
 import unittest
 from passlock import User
-from passlock import Credentials
+from credentials import Credentials
 
 class TestClass(unittest.TestCase):
     """
