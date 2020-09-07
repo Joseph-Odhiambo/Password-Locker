@@ -1,5 +1,4 @@
-import random # to generate random password
-import string
+
 import pyperclip
 class User:
     """
